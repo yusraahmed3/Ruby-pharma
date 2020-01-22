@@ -1,0 +1,26 @@
+<h1> Products </h1>
+
+<table border="1" width="20%" cellpadding="10" cellspacing="0">
+    <thead>
+        <th> Product Name</th>
+        <th> Description </th>
+        <th> Price </th>
+        <th></th>
+        <th></th>
+    </thead>
+    <tbody>
+        <% @product.each do |c| %>
+            <tr>
+                <td><%= c.name %></td>
+                <td> <%= c.description %></td>
+                <td> <%= c.price %></td>
+                <td> <%= link_to "edit", edit_product_path(c.id)%> </td>
+                <td> <%= link_to "delete", product_path(c.id), method: :delete, :data => {:confirm => 'Are you sure you want to delete this product?'}  %> </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<p>
+    <%= link_to "Add product", {controller: "product", action: "new" } %> 
+</p>
